@@ -487,7 +487,7 @@ class Mail_Queue extends PEAR
             if (is_a($mail, 'Mail_Queue_Error')) {
                 return $mail;
             }
-            return Mail_Queue_Error(
+            return new Mail_Queue_Error(
                 "Unknown object/type: " . get_class($mail),
                 MAILQUEUE_ERROR_UNEXPECTED
             );
