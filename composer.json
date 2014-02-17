@@ -1,0 +1,53 @@
+{
+    "authors": [
+        {
+            "email": "l.alberton@quipo.it",
+            "name": "Lorenzo Alberton",
+            "role": "Lead"
+        },
+        {
+            "email": "till@php.net",
+            "name": "Till Klampaeckel",
+            "role": "Lead"
+        },
+        {
+            "email": "radek.maciaszek@gmail.com",
+            "name": "Radek Maciaszek",
+            "role": "Lead"
+        },
+        {
+            "email": "bate@php.net",
+            "name": "Marco Kaiser",
+            "role": "Lead"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Mail_Queue": "./"
+        }
+    },
+    "description": "More info available on: http://pear.php.net/package/Mail_Queue",
+    "include-path": [
+        "./"
+    ],
+    "license": "BSD-3-Clause",
+    "name": "pear/mail_queue",
+    "support": {
+        "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Mail_Queue",
+        "source": "https://github.com/pear/Mail_Queue"
+    },
+    "type": "library",
+    "require": {
+        "pear/pear_exception": "*",
+        "pear/mail": "*",
+        "pear/mail_mime": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
+    "suggest": {
+        "pear/db": "For DB database support",
+        "pear/mdb": "For MDB database support",
+        "pear/mdb2": "For MDB2 database support"
+    }
+}
