@@ -1,0 +1,46 @@
+{
+    "authors": [
+        {
+            "email": "l.alberton@quipo.it",
+            "name": "Lorenzo Alberton",
+            "role": "Lead"
+        },
+        {
+            "email": "till@php.net",
+            "name": "Till Klampaeckel",
+            "role": "Lead"
+        },
+        {
+            "email": "radek.maciaszek@gmail.com",
+            "name": "Radek Maciaszek",
+            "role": "Lead"
+        },
+        {
+            "email": "bate@php.net",
+            "name": "Marco Kaiser",
+            "role": "Lead"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Mail_Queue": "./"
+        }
+    },
+    "description": "More info available on: http://pear.php.net/package/Mail_Queue",
+    "include-path": [
+        "./"
+    ],
+    "license": "BSD",
+    "name": "pear/mail_queue",
+    "support": {
+        "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Mail_Queue",
+        "source": "https://github.com/pear/Mail_Queue"
+    },
+    "type": "library",
+    "require": {
+        "pear/pear_exception": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    }
+}
