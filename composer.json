@@ -23,14 +23,14 @@
     ],
     "autoload": {
         "psr-0": {
-            "Mail_Queue": "./"
+            "Mail": "./"
         }
     },
     "description": "More info available on: http://pear.php.net/package/Mail_Queue",
     "include-path": [
         "./"
     ],
-    "license": "BSD-3-Clause",
+    "license": "BSD-2-Clause",
     "name": "pear/mail_queue",
     "support": {
         "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Mail_Queue",
@@ -38,7 +38,7 @@
     },
     "type": "library",
     "require": {
-        "pear/pear_exception": "*",
+        "pear/pear": "*",
         "pear/mail": "*",
         "pear/mail_mime": "*"
     },
