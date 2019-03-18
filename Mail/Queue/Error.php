@@ -3,7 +3,7 @@
  * +----------------------------------------------------------------------+
  * | PEAR :: Mail :: Queue                                                |
  * +----------------------------------------------------------------------+
- * | Copyright (c) 1997-2008 Radek Maciaszek, Lorenzo Alberton            |
+ * | Copyright (c) 1997-2019 Radek Maciaszek, Lorenzo Alberton            |
  * +----------------------------------------------------------------------+
  * | All rights reserved.                                                 |
  * |                                                                      |
@@ -35,7 +35,7 @@
  * | POSSIBILITY OF SUCH DAMAGE.                                          |
  * +----------------------------------------------------------------------+
  *
- * PHP Version 4 and 5
+ * PHP Version 4 - 7
  *
  * @category Mail
  * @package  Mail_Queue
@@ -60,7 +60,25 @@
  */
 class Mail_Queue_Error extends PEAR_Error
 {
-    // {{{ constructor
+    // {{{ __construct
+
+    /**
+     * Mail_Queue_Error constructor.
+     *
+     * @param mixed   $code      Mail_Queue error code, or string with error message.
+     * @param integer $mode      what 'error mode' to operate in
+     * @param integer $level     what error level to use for
+     *                           $mode & PEAR_ERROR_TRIGGER
+     * @param string  $debuginfo additional debug info
+     */
+    function __construct($code = MAILQUEUE_ERROR, $mode = PEAR_ERROR_RETURN,
+        $level = E_USER_NOTICE,  $file=__FILE__, $line=__LINE__, $debuginfo='')
+    {
+        return $this->Mail_Queue_Error($code, $mode, $level, $file, $line, $debuginfo);
+    }
+
+    // }}}
+    // {{{ PHP4 constructor
 
     /**
      * Mail_Queue_Error constructor.
@@ -78,10 +96,10 @@ class Mail_Queue_Error extends PEAR_Error
         $debuginfo .= (empty($debuginfo) ? '' : ' - '). 'FILE: '.$file.', LINE: '.$line;
         if (is_int($code)) {
             $this->PEAR_Error('Mail Queue Error: ' . Mail_Queue::errorMessage($code),
-                              $code, $mode, $level, $debuginfo);
+                $code, $mode, $level, $debuginfo);
         } else {
             $this->PEAR_Error('Mail Queue Error: ' . $code, MAILQUEUE_ERROR, $mode,
-                              $level, $debuginfo);
+                $level, $debuginfo);
         }
     }
 

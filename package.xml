@@ -364,5 +364,20 @@ Bug #17991 	Package installed in wrong directory
 Bug #17993 	Package installed in wrong directory
    </notes>
   </release>
+  <release>
+   <version>
+    <release>1.2.7</release>
+    <api>1.2.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2019-03-18</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>
+Bug #23742	Deprecated message with PHP 7.1
+   </notes>
+  </release>
  </changelog>
 </package>

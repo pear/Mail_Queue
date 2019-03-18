@@ -4,7 +4,7 @@
  * +----------------------------------------------------------------------+
  * | PEAR :: Mail :: Queue :: Body                                        |
  * +----------------------------------------------------------------------+
- * | Copyright (c) 1997-2004 The PHP Group                                |
+ * | Copyright (c) 1997-2019 The PHP Group                                |
  * +----------------------------------------------------------------------+
  * | All rights reserved.                                                 |
  * |                                                                      |
@@ -36,7 +36,7 @@
  * | POSSIBILITY OF SUCH DAMAGE.                                          |
  * +----------------------------------------------------------------------+
  *
- * PHP Version 4 and 5
+ * PHP Version 4 - 7
  *
  * @category Mail
  * @package  Mail_Queue
@@ -147,7 +147,34 @@ class Mail_Queue_Body {
     var $delete_after_send = true;
 
     /**
-     * Mail_Queue_Body::Mail_Queue_Body() constructor
+     * Constructor
+     *
+     * @param integer $id Mail ident
+     * @param string $create_time  Create time
+     * @param strine $time_to_send  Time to send
+     * @param string $sent_time  Sent time
+     * @param integer $id_user  Sender user id (who sent mail)
+     * @param string $ip Sender user ip
+     * @param strine $sender  Sender e-mail
+     * @param string $recipient Reciepient e-mail
+     * @param string $headers Mail headers (in RFC)
+     * @param string $body Mail body (in RFC)
+     * @param integer $try_sent  How many times mail was sent
+     *
+     * @return void
+     *
+     * @access public
+     */
+    function __construct($id, $create_time, $time_to_send, $sent_time, $id_user,
+        $ip, $sender, $recipient, $headers, $body,
+        $delete_after_send=true, $try_sent=0)
+    {
+        return $this->Mail_Queue_Body($id, $create_time, $time_to_send, $sent_time, $id_user,
+        $ip, $sender, $recipient, $headers, $body, $delete_after_send, $try_sent);
+    }
+
+    /**
+     * Mail_Queue_Body::Mail_Queue_Body() constructor (PHP 4 compatibility)
      *
      * @param integer $id Mail ident
      * @param string $create_time  Create time
@@ -166,8 +193,8 @@ class Mail_Queue_Body {
      * @access public
      */
     function Mail_Queue_Body($id, $create_time, $time_to_send, $sent_time, $id_user,
-                       $ip, $sender, $recipient, $headers, $body,
-                       $delete_after_send=true, $try_sent=0)
+        $ip, $sender, $recipient, $headers, $body,
+        $delete_after_send=true, $try_sent=0)
     {
         $this->id                = $id;
         $this->create_time       = $create_time;

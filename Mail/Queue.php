@@ -4,7 +4,7 @@
  * +----------------------------------------------------------------------+
  * | PEAR :: Mail :: Queue                                                |
  * +----------------------------------------------------------------------+
- * | Copyright (c) 1997-2008 Radek Maciaszek, Lorenzo Alberton            |
+ * | Copyright (c) 1997-2019 Radek Maciaszek, Lorenzo Alberton            |
  * +----------------------------------------------------------------------+
  * | All rights reserved.                                                 |
  * |                                                                      |
@@ -36,7 +36,7 @@
  * | POSSIBILITY OF SUCH DAMAGE.                                          |
  * +----------------------------------------------------------------------+
  *
- * PHP Version 4 and 5
+ * PHP Version 4 - 7
  *
  * @category Mail
  * @package  Mail_Queue
@@ -178,7 +178,7 @@ class Mail_Queue extends PEAR
     // {{{ Mail_Queue
 
     /**
-     * Mail_Queue constructor
+     * Mail_Queue constructor (PHP 4 compatibility)
      *
      * @param  array $container_options  Mail_Queue container options
      * @param  array $mail_options  How send mails.
@@ -255,28 +255,6 @@ class Mail_Queue extends PEAR
         }
         return $obj;
     }
-    // }}}
-    // {{{ _Mail_Queue()
-
-    /**
-     * Mail_Queue desctructor
-     *
-     * @return void
-     * @access public
-     */
-    function _Mail_Queue()
-    {
-        unset($this);
-    }
-
-    // }}}
-    // {{{ __destruct
-
-    function __destruct()
-    {
-        $this->_Mail_Queue();
-    }
-
     // }}}
     // {{{ factorySendMail()
 
@@ -682,7 +660,7 @@ class Mail_Queue extends PEAR
         } else {
             $err = PEAR::raiseError(sprintf("%s", $msg), $code, $mode);
         }
-        return $err;
+ï¿½ ï¿½ ï¿½ ï¿½ return $err;
     }
 */
 }
