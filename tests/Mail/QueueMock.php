@@ -1,7 +1,7 @@
 <?php
 class Mail_QueueMock extends Mail_QueueAbstract
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -16,11 +16,15 @@ class Mail_QueueMock extends Mail_QueueAbstract
          */
         $mail_opts = array('driver' => 'mock');
 
-        $this->queueMock = $this->getMock(
-            'Mail_Queue',
-            array('get',),
-            array($container_opts, $mail_opts,)
-        );
+        $this->queueMock = $this->getMockBuilder(Mail_Queue::class)
+            ->setMethods(array('get'))
+            ->setConstructorArgs(array($container_opts, $mail_opts))
+            ->getMock();
+        // $this->queueMock = $this->getMock(
+        //     'Mail_Queue',
+        //     array('get',),
+        //     array($container_opts, $mail_opts,)
+        // );
 
         $this->queueMock->expects($this->once())
             ->method('get')
@@ -38,7 +42,7 @@ class Mail_QueueMock extends Mail_QueueAbstract
         $this->assertTrue($this->queueMock->hasErrors());
 
         $errors = $this->queueMock->getErrors();
-        $this->assertInternalType('array', $errors);
+        $this->assertIsArray($errors);
 
         $err = $errors[0];
         $this->assertEquals("OH NOEZ", $err->getMessage());

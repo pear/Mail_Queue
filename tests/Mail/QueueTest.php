@@ -17,7 +17,7 @@ class Mail_QueueTest extends Mail_QueueAbstract
         $mailId = $this->queue->put($sender, $recipient, $headers, $body, $time_to_send=0, true, $id_user);
 
         $this->assertEquals(1, $mailId); // it's the first email, after all :-)
-        $this->assertEquals(1, count($this->queue->getQueueCount()));
+        $this->assertEquals(1, $this->queue->getQueueCount());
     }
 
     /**
@@ -28,7 +28,7 @@ class Mail_QueueTest extends Mail_QueueAbstract
         $randomId = rand(1, 12);
         $status   = $this->queue->sendMailById($randomId);
 
-        $this->assertContains('no such message', $status->getDebugInfo());
+        $this->assertStringContainsString('no such message', $status->getDebugInfo());
         $this->assertTrue(($status instanceof Mail_Queue_Error));
     }
 

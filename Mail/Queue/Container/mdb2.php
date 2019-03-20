@@ -150,7 +150,7 @@ class Mail_Queue_Container_mdb2 extends Mail_Queue_Container
             $this->db = &$db;
         } elseif (is_string($db) || is_array($db)) {
             include_once 'MDB2.php';
-            $this->db =& MDB2::connect($db);
+            $this->db = MDB2::connect($db);
         } elseif (is_object($db) && MDB2::isError($db)) {
             return new Mail_Queue_Error(MAILQUEUE_ERROR_CANNOT_CONNECT,
                 $this->pearErrorMode, E_USER_ERROR, __FILE__, __LINE__,

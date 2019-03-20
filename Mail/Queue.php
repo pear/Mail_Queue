@@ -271,7 +271,7 @@ class Mail_Queue extends PEAR
         $options = $this->mail_options;
         unset($options['driver']);
 
-        $this->send_mail =& Mail::factory($this->mail_options['driver'], $options);
+        $this->send_mail = Mail::factory($this->mail_options['driver'], $options);
     }
 
     /**
@@ -439,7 +439,7 @@ class Mail_Queue extends PEAR
      */
     function sendMailById($id, $set_as_sent=true)
     {
-        $mail =& $this->container->getMailById($id);
+        $mail = $this->container->getMailById($id);
         if (PEAR::isError($mail)) {
             return $mail;
         }
@@ -574,13 +574,13 @@ class Mail_Queue extends PEAR
     /**
      * Tell whether a result code from a Mail_Queue method is an error
      *
-     * @param   int       $value  result code
+     * @param   int       $data  result code
      * @return  boolean   whether $value is an MAILQUEUE_ERROR
      * @access public
      */
-    function isError($value)
+    static function isError($data, $code = NULL)
     {
-        return (is_object($value) && is_a($value, 'pear_error'));
+        return (is_object($data) && is_a($data, 'pear_error'));
     }
 
     // }}}
@@ -594,7 +594,7 @@ class Mail_Queue extends PEAR
      *                  not recognized
      * @access public
      */
-    function errorMessage($value)
+    static function errorMessage($value)
     {
         static $errorMessages;
         if (!isset($errorMessages)) {
@@ -660,8 +660,7 @@ class Mail_Queue extends PEAR
         } else {
             $err = PEAR::raiseError(sprintf("%s", $msg), $code, $mode);
         }
-� � � � return $err;
+        return $err;
     }
 */
 }
-?>
