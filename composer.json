@@ -40,11 +40,13 @@
 	"require": {
 		"pear/pear": "*",
 		"pear/mail": "*",
-		"pear/mail_mime": "*"
+		"pear/mail_mime": "*",
+		"php": ">=5.5.0"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "*",
-		"phpunit/php-invoker": "*"
+		"phpunit/phpunit": ">=7.0.0",
+		"phpunit/php-invoker": "*",
+		"php": ">=7.0.0"
 	},
 	"suggest": {
 		"pear/db": "For DB database support",
