@@ -2,7 +2,7 @@
 /**
  * Base class for all tests.
  */
-abstract class Mail_QueueAbstract extends PHPUnit_Framework_TestCase
+abstract class Mail_QueueAbstract extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var string $db Name of the database file.
@@ -30,14 +30,17 @@ abstract class Mail_QueueAbstract extends PHPUnit_Framework_TestCase
      * @return void
      * @uses   MDB2_Driver_SQLite
      */
-    public function setUp()
+    public function setUp(): void
     {
-        if (!extension_loaded('sqlite')) {
+        $driver = 'sqlite';
+        if (extension_loaded('sqlite3')) {
+            $driver = 'sqlite3';
+        } else if (strnatcmp(phpversion(), '5.3.0') < 0 && !extension_loaded('sqlite')) {
             $this->markTestSkipped("You need ext/sqlite to run this test suite.");
             return;
         }
 
-        $this->dsn = 'sqlite:///' . __DIR__ . "/{$this->db}?mode=0644";
+        $this->dsn = $driver.':///' . __DIR__ . "/{$this->db}?mode=0644";
 
         $this->setUpDatabase($this->dsn);
 
@@ -69,7 +72,7 @@ abstract class Mail_QueueAbstract extends PHPUnit_Framework_TestCase
      * @return void
      * @see    self::setUpDatabase()
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         $mdb2 = MDB2::connect($this->dsn);
         $mdb2->query("DROP TABLE '{$this->table}'");
@@ -147,6 +150,8 @@ abstract class Mail_QueueAbstract extends PHPUnit_Framework_TestCase
                 'default' => 0,
             ),
         );
+
+        @$mdb2->manager->dropTable($this->table);
 
         $status = $mdb2->manager->createTable($this->table, $cols);
         $this->handlePearError($status, "Create table");
